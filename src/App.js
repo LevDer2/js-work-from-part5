@@ -13,21 +13,29 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Sticker App Pigs</h1>
+      <div className={styles.app}>
+        <h1 className={styles.title}>Sticker App Pigs</h1>
+
         <div className={styles.box}>
           {stickers.map(({ img, label }, index) => {
+            const isSelected = this.state.nameImg === label;
+
             return (
-              <div key={index} onClick={() => this.handleSelectedName(label)}>
-                <img src={img} alt={label} />
+              <div
+                key={index}
+                className={`${styles.card} ${isSelected ? styles.selected : ""}`}
+                onClick={() => this.handleSelectedName(label)}
+              >
+                <img className={styles.image} src={img} alt={label} />
               </div>
             );
           })}
         </div>
-        <h2>
+
+        <h2 className={styles.message}>
           {this.state.nameImg
             ? `Ви обрали: ${this.state.nameImg}`
-            : "Вибереть стикер та дізнайтесь його назву!"}
+            : "Виберіть стикер та дізнайтесь його назву!"}
         </h2>
       </div>
     );
