@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import stickers from "./stickers.json";
 import styles from "./App.module.css";
 import {Choice} from"./components/Choice/Choice"
+import { StickerList } from "./components/StickerList/StickerList";
 
 class App extends Component {
   state = {
@@ -17,7 +17,9 @@ class App extends Component {
       <div className={styles.app}>
         <h1 className={styles.title}>Sticker App Pigs</h1>
 
-        <div className={styles.box}>
+        <StickerList onSelected={this.handleSelectedName}/>
+
+        {/* <div className={styles.box}>
           {stickers.map(({ img, label }, index) => {
             const isSelected = this.state.nameImg === label;
 
@@ -33,7 +35,7 @@ class App extends Component {
               </div>
             );
           })}
-        </div>
+        </div> */}
         <Choice selected={this.state.nameImg} />
         {/* <h2 className={styles.message}>
           {this.state.nameImg
