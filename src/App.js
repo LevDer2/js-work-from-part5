@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import stickers from "./stickers.json";
 import styles from "./App.module.css";
+import {Choice} from"./components/Choice/Choice"
 
 class App extends Component {
   state = {
@@ -23,7 +24,9 @@ class App extends Component {
             return (
               <div
                 key={index}
-                className={`${styles.card} ${isSelected ? styles.selected : ""}`}
+                className={`${styles.card} ${
+                  isSelected ? styles.selected : ""
+                }`}
                 onClick={() => this.handleSelectedName(label)}
               >
                 <img className={styles.image} src={img} alt={label} />
@@ -31,12 +34,12 @@ class App extends Component {
             );
           })}
         </div>
-
-        <h2 className={styles.message}>
+        <Choice selected={this.state.nameImg} />
+        {/* <h2 className={styles.message}>
           {this.state.nameImg
             ? `Ви обрали: ${this.state.nameImg}`
             : "Виберіть стикер та дізнайтесь його назву!"}
-        </h2>
+        </h2> */}
       </div>
     );
   }
