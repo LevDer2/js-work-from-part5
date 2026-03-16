@@ -1,30 +1,32 @@
 import React, { Component } from "react";
-import stickers from "../../stickers.json"
-export class StickerList extends Component{
+import stickers from "../../stickers.json";
+import style from "./StickerList.module.css";
+import Sticker from "../Sticker/Sticker";
 
-handleClick = (label)=> {
+export class StickerList extends Component {
+  // handleClick = (label) => {
+  //   const { onSelected } = this.props;
+  //   onSelected(label);
+  // };
+  render() {
     const {onSelected} = this.props
-    onSelected (label)
-}
-
-render(){
-    return <div>
-              {stickers.map(({ img, label }, index) => {
-                
-    
-                return (
-                  <div
-                    key={index}
-                    
-                    onClick={() => this.handleClick(label)}
-                  >
-                    <img src={img} alt={label} />
-                  </div>
-                );
-              })}
-            </div>
-}
-
-
-
+    return (
+      <div className={style.box}>
+        {stickers.map(({ img, label }, index) => {
+          return (
+            // <div key={index} className={style.card} onClick={() => this.handleClick(label)}>
+            //   <img src={img} alt={label} className={style.image}/>
+            // </div>
+            <Sticker
+              key={index}
+              img={img}
+              label={label}
+              // handleClick={this.handleClick}
+              onSelected={onSelected}
+            />
+          );
+        })}
+      </div>
+    );
+  }
 }
